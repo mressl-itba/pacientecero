@@ -128,7 +128,7 @@ El **puntaje del alineamiento** $F(n, m)$ sirve como medida de similitud. La ref
 A partir del alineamiento también se computa la **identidad porcentual**:
 
 $$
-\text{identity}\_\text{pct} = \frac{\text{posiciones con match}}{\text{longitud del alineamiento}} \times 100
+\text{identity} = \frac{\text{posiciones con match}}{\text{longitud del alineamiento}} \times 100
 $$
 
 ### Ejemplo
@@ -198,7 +198,7 @@ pacientecero --query <muestra.fasta>
 El output debe ser una tabla en formato CSV ordenada de mayor a menor identidad porcentual:
 
 ```text
-rank,accession,description,score,identity_pct
+rank,accession,description,score,identity
 1,PX823734,"A/American green-winged Teal/MN/25G02834-001-original/2025(H5N1)",2941,98.7
 2,PV072077,"A/cattle/CA/24-038145-002-original/2024(H5N1)",2918,97.9
 ...
