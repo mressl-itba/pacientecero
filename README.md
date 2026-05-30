@@ -127,7 +127,9 @@ El **puntaje del alineamiento** $F(n, m)$ sirve como medida de similitud. La ref
 
 A partir del alineamiento también se computa la **identidad porcentual**:
 
-$$\text{identity\_pct} = \frac{\text{posiciones con match}}{\text{longitud del alineamiento}} \times 100$$
+$$
+\text{identity}\_\text{pct} = \frac{\text{posiciones con match}}{\text{longitud del alineamiento}} \times 100
+$$
 
 ### Ejemplo
 
