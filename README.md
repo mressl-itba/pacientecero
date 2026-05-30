@@ -160,7 +160,7 @@ Traceback desde $(3,2)$:
 
 1. Diagonal: $T$ con $T$.
 2. Arriba: $G$ con gap.
-3. Diagonal: $A$ con $A$.
+3. Izquierda: $A$ con $A$.
 
 Alineamiento resultante:
 
@@ -170,6 +170,8 @@ A - T
 ```
 
 Score total: $+2 + (-2) + +2 = 2$.
+
+Identidad porcentual: $2 / 3 * 100 = 66.7$.
 
 ## La herramienta
 
