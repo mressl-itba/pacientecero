@@ -99,9 +99,9 @@ Cada celda se calcula mirando tres movimientos posibles (diagonal, arriba, izqui
 
 $$
 F(i, j) = \max \begin{cases}
-F(i-1,\; j-1) + s(a_i,\, b_j) \\
-F(i-1,\; j) + g \\
-F(i,\; j-1) + g
+F(i-1, j-1) + s(a_i, b_j) \\
+F(i-1, j) + g \\
+F(i, j-1) + g
 \end{cases}
 $$
 
