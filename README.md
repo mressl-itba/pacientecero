@@ -133,7 +133,7 @@ $$
 
 ### Ejemplo
 
-Tomemos las secuencias $\text{AGT}$ y $\text{AT}$, con scoring:
+Alineemos las secuencias $\text{AGT}$ y $\text{AT}$, con scoring:
 
 - match $=+2$
 - mismatch $=-1$
