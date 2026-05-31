@@ -87,7 +87,7 @@ Vas a descargar las secuencias de referencia directamente del **NCBI**, la base 
 
 Para cuantificar la similitud entre el genoma incógnita y cada referencia, vas a usar **alineamiento global de secuencias**, formalizado por Needleman y Wunsch en 1970.
 
-La idea central es simple: queremos comparar dos secuencias **de punta a punta** y permitir inserciones de gaps (`-`) para representar inserciones/deleciones biológicas. Entre todas las formas posibles de alinearlas, buscamos la que da el **mayor puntaje total**.
+La idea central es simple: queremos comparar dos secuencias A y B **de punta a punta** y permitir inserciones de gaps (`-`) para representar inserciones/deleciones biológicas. Entre todas las formas posibles de alinearlas, buscamos la que da el **mayor puntaje total**.
 
 Para eso se usa programación dinámica con una matriz donde:
 
@@ -99,9 +99,9 @@ Cada celda se calcula mirando tres movimientos posibles (diagonal, arriba, izqui
 
 $$
 F(i, j) = \max \begin{cases}
-F(i-1, j-1) + s(a_i, b_j) \\
-F(i-1, j) + g \\
-F(i, j-1) + g
+F(i - 1, j - 1) + s(a_i, b_j) \\
+F(i - 1, j) + g \\
+F(i, j - 1) + g
 \end{cases}
 $$
 
@@ -110,18 +110,18 @@ donde:
 - Diagonal: alineas $a_i$ con $b_j$ (match o mismatch).
 - Arriba: alineas $a_i$ con un gap en B.
 - Izquierda: alineas un gap en A con $b_j$.
-- $s(a,b)$ da el puntaje de match/mismatch.
+- $s(a, b)$ da el puntaje de match/mismatch.
 - $g$ es la penalización por gap (constante por posición).
 
 Las condiciones de borde son:
 
-- $F(0,0)=0$.
-- $F(i,0)=i\cdot g$: para alinear $i$ letras contra secuencia vacía solo puedes usar gaps.
-- $F(0,j)=j\cdot g$: análogo para la otra secuencia.
+- $F(0, 0) = 0$.
+- $F(i, 0) = i \cdot g$: para alinear $i$ letras contra secuencia vacía solo puedes usar gaps.
+- $F(0, j) = j \cdot g$: análogo para la otra secuencia.
 
-Con esto, completas la matriz de izquierda a derecha y de arriba hacia abajo hasta llegar a $F(n,m)$, que es el mejor score global.
+Con esto, completas la matriz de izquierda a derecha y de arriba hacia abajo hasta llegar a $F(n, m)$, que es el mejor score global.
 
-Luego haces **traceback**: desde $(n,m)$ vuelves a $(0,0)$ siguiendo el movimiento que originó cada celda (diagonal/arriba/izquierda). Ese recorrido reconstruye el alineamiento óptimo caracter por caracter.
+Luego haces **traceback**: desde $(n, m)$ vuelves a $(0, 0)$ siguiendo el movimiento que originó cada celda (diagonal/arriba/izquierda). Ese recorrido reconstruye el alineamiento óptimo caracter por caracter.
 
 El **puntaje del alineamiento** $F(n, m)$ sirve como medida de similitud. La referencia con mayor puntaje identifica el clado más probable.
 
@@ -150,13 +150,13 @@ La matriz $F$ queda:
 
 Cómo se obtiene (ejemplos de celdas):
 
-- $F(1,1)=\max(0+2,\,-2-2,\,-2-2)=2$
-- $F(2,1)=\max(-2-1,\,2-2,\,-4-2)=0$
-- $F(3,2)=\max(0+2,\,1-2,\,-2-2)=2$
+- $F(1, 1) = \max((0 + 2), ({-}2 + {-}2), ({-}2 + {-}2)) = 2$
+- $F(2, 1) = \max(({-}2 + {-}1), (2 + {-}2), ({-}4 + {-}2)) = 0$
+- $F(3, 2) = \max((0 + 2), (1 + {-}2), ({-}2 + {-}2)) = 2$
 
-El score óptimo final es $F(3,2)=2$.
+El score óptimo final es $F(3, 2) = 2$.
 
-Traceback desde $(3,2)$:
+Traceback desde $(3, 2)$:
 
 1. Diagonal: $T$ con $T$.
 2. Arriba: $G$ con gap.
@@ -169,7 +169,7 @@ A G T
 A - T
 ```
 
-Score total: $+2 + (-2) + +2 = 2$.
+Score total: $2 + {-}2 + 2 = 2$.
 
 Identidad porcentual: $2 / 3 * 100 = 66.7$.
 
