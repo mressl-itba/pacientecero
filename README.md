@@ -141,9 +141,9 @@ Alineemos las secuencias $\text{AGT}$ y $\text{AT}$, con scoring:
 
 La matriz $F$ queda:
 
-| $F(i,j)$ | '' | A | T |
+| $F(i,j)$ | □ | A | T |
 | --- | ---: | ---: | ---: |
-| **''** | 0 | -2 | -4 |
+| **□** | 0 | -2 | -4 |
 | **A** | -2 | 2 | 0 |
 | **G** | -4 | 0 | 1 |
 | **T** | -6 | -2 | 2 |
